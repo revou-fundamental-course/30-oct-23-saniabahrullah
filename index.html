@@ -4,26 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator</title>
+    <title>Kalkulator BMI</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>BMI Calculator</h1>
+        <h1>Kalkulator BMI</h1>
 
         <div class="input-section">
-            <label for="height">Height (cm): </label>
+            <label for="age">Usia (tahun): </label>
+            <input type="number" id="age" required>
+            <br>
+            <label for="gender">Jenis Kelamin: </label>
+            <select id="gender" required>
+                <option value="male">Laki-Laki</option>
+                <option value="female">Wanita</option>
+            </select>
+            <br>
+            <label for="height">Tinggi (cm): </label>
             <input type="number" id="height" required>
             <br>
-            <label for="weight">Weight (kg): </label>
+            <label for="weight">Berat Badan (kg): </label>
             <input type="number" id="weight" required>
             <br>
-            <button onclick="calculateBMI()">Calculate BMI</button>
+            <button onclick="calculateBMI()">Hitung BMI</button>
         </div>
 
         <div class="result-section" id="result">
-            <h2>Result:</h2>
+            <h2>Hasil:</h2>
             <p id="bmi"></p>
             <p id="interpretation"></p>
         </div>
