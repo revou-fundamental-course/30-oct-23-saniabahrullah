@@ -1,24 +1,31 @@
 function calculateBMI() {
-    var height = parseFloat(document.getElementById("height").value) / 100; // Convert to meters
-    var weight = parseFloat(document.getElementById("weight").value);
+    // Mengambil nilai input dari form
+    var age = document.getElementById("age").value;
+    var gender = document.getElementById("gender").value;
+    var height = document.getElementById("height").value;
+    var weight = document.getElementById("weight").value;
 
-    if (!isNaN(height) && !isNaN(weight)) {
-        var bmi = weight / (height * height);
-        var interpretation = "";
+    // Melakukan perhitungan BMI
+    var heightMeters = height / 100; // Mengkonversi tinggi dari cm ke meter
+    var bmi = weight / (heightMeters * heightMeters);
 
-        if (bmi < 18.5) {
-            interpretation = "Underweight";
-        } else if (bmi < 24.9) {
-            interpretation = "Normal weight";
-        } else if (bmi < 29.9) {
-            interpretation = "Overweight";
-        } else {
-            interpretation = "Obesity";
-        }
+    // Menampilkan hasil BMI
+    var bmiResult = document.getElementById("bmi");
+    bmiResult.innerHTML = "BMI: " + bmi.toFixed(2);
 
-        document.getElementById("bmi").textContent = "BMI: " + bmi.toFixed(2);
-        document.getElementById("interpretation").textContent = "Interpretation: " + interpretation;
+    // Menyediakan interpretasi BMI berdasarkan kategori
+    var interpretation = document.getElementById("interpretation");
+    if (bmi < 18.5) {
+        interpretation.innerHTML = "Underweight";
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        interpretation.innerHTML = "Normal weight";
+    } else if (bmi >= 25 && bmi < 29.9) {
+        interpretation.innerHTML = "Overweight";
     } else {
-        alert("Please enter valid height and weight.");
+        interpretation.innerHTML = "Obesity";
     }
+
+    // Menambahkan informasi usia dan jenis kelamin ke hasil BMI
+    bmiResult.innerHTML += "<br>Age: " + age + " years";
+    bmiResult.innerHTML += "<br>Gender: " + gender;
 }
